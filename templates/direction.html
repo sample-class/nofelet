@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block container %}
+
+    <h1 class="display-5 mt-4">Летим из {{ departure[3:]}}</h1>
+    <p class="mb-4">Найдено 15 туров, от 26 000 до 84 600 и от 4 ночей до 15 ночей</p>
+    <!-- HERO -->
+
+
+
+    <!-- CARDS -->
+
+    <div class="row mt-5">
+
+      {% for tour in tours %}
+        {% if direction == tour[1].departure %}
+        <div class="col-4">
+          <div class="card mb-3" >
+            <img src="{{ tour[1].picture }}" class="card-img-top img-fluid">
+            <div class="card-body">
+              <h5 class="card-title">{{ tour[1].title }}</h5>
+              <p class="card-text">{{ tour[1].description|truncate(50) }}</p>
+              <a href="../../tours/{{ tour[0] }}" class="btn btn-sm btn-primary">Подробнее</a>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+
+{% endblock %}
